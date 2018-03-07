@@ -1,0 +1,7 @@
+import { Controller } from '@nestjs/common';
+import { __SERVICE_NAME__ } from '__SERVICE_IMPORT__';
+
+@Controller()
+export class __CLASS_NAME__ {
+  constructor(private readonly __SERVICE_NAME_LOWER__: __SERVICE_NAME__) {}
+}

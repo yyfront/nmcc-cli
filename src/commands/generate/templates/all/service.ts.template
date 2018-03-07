@@ -1,0 +1,9 @@
+import { Component, Inject } from '@nestjs/common';
+
+@Component()
+export class __CLASS_NAME__ {
+  constructor(
+    @Inject('Sequelize') private readonly db,
+    @Inject('util') private readonly util
+  ) {}
+}

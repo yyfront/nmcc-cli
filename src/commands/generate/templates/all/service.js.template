@@ -1,0 +1,8 @@
+import { Component, Dependencies } from '@nestjs/common';
+
+@Component()
+@Dependencies('Sequelize')
+@Dependencies('util')
+export class __CLASS_NAME__ {
+  constructor(db, util) {}
+}
