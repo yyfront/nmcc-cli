@@ -1,9 +1,9 @@
-# NMCC
+# nmcc-cli
 A CLI tool for Nest applications
 
 ## Installation
 ### npm :
-```npm install -g nmcc```
+```npm install -g nmcc-cli```
 
 ## Commands
 ### new
