@@ -10,7 +10,6 @@ export class ModuleImportRegister {
   ) {}
 
   public register(asset: Asset, module: Asset): Asset {
-    this.logger.debug(ColorService.blue('[DEBUG]'), `- ${ ModuleImportRegister.name }::register() -`, `asset : ${ JSON.stringify(asset, null, 2) }`, `module : ${ JSON.stringify(module, null, 2) }`);
     const lines = module.template.content.split('\n');
     const insertIndex: number = lines.findIndex((line) => line === '');
     const toInsert: string = this.buildLineToInsert(asset, module);
