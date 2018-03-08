@@ -9,7 +9,6 @@ export class UpdateCommand {
       .command('update', 'Update the Nest project')
       .action(async (args, options, logger) => {
         LoggerService.setLogger(logger);
-        logger.info('Inside update command handler');
         await new UpdateHandler().handle();
       });
   }
