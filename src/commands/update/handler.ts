@@ -7,9 +7,9 @@ import * as path from 'path';
 
 
 export class UpdateHandler {
-
     private DEFAULT_REMOTE = 'https://github.com/idea100/nest-app.git';
     private TEMP_UPDATE_FOLDER = 'tempUpdate';
+    private MODULE_LOCATION = 'src/modules';
 
     constructor(
         private logger: Logger = LoggerService.getLogger(),
@@ -35,15 +35,20 @@ export class UpdateHandler {
         })
     }
 
+    private async filterModule(src, filter) {
+        const originModule = path.resolve(src);
+        let moduleArr = await FileSystemUtils.readdir(originModule);
+        return moduleArr.filter((item) => item.indexOf(filter) >= 0);
+    }
+
     private async deleteOldModule() {
         return new Promise(async (resolve, reject) => {
             try {
-                const originModule = path.resolve('src/modules');
-                let moduleArr = await FileSystemUtils.readdir(originModule);
-                moduleArr = moduleArr.filter((item) => item.indexOf('$') >= 0);
+                const originModule = path.resolve(this.MODULE_LOCATION);
+                let moduleArr = await this.filterModule(originModule, '$');
 
                 for (let module of moduleArr) {
-                    await fse.remove(path.resolve('src/modules', module));
+                    await fse.remove(path.resolve(this.MODULE_LOCATION, module));
                 }
                 resolve();
             } catch (err) {
@@ -56,16 +61,16 @@ export class UpdateHandler {
     private async updateModule() {
         return new Promise(async (resolve, reject) => {
             try {
-                const updateModule = path.resolve(this.TEMP_UPDATE_FOLDER, 'src/modules');
-                const originModule = path.resolve('src/modules');
+                const updateModule = path.resolve(this.TEMP_UPDATE_FOLDER, this.MODULE_LOCATION);
+                const originModule = path.resolve(this.MODULE_LOCATION);
 
-                let moduleArr = await FileSystemUtils.readdir(updateModule);
-                moduleArr = moduleArr.filter((item) => item.indexOf('$') >= 0);
+                let moduleArr = await this.filterModule(updateModule, '$');
 
                 for (let module of moduleArr) {
-                    const destination = path.resolve(this.TEMP_UPDATE_FOLDER, 'src/modules', module);
-                    await fse.copy(destination, path.resolve(originModule, module));
-                    this.logger.info(ColorService.yellow('update'), path.resolve(originModule, module));
+                    const destination = path.resolve(this.TEMP_UPDATE_FOLDER, this.MODULE_LOCATION, module);
+                    const updateDes = path.resolve(originModule, module);
+                    await fse.copy(destination, updateDes);
+                    this.logger.info(ColorService.yellow('update'), updateDes);
                 }
                 resolve();
             } catch (err) {
