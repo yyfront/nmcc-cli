@@ -1,6 +1,6 @@
 {
-  "name": "nmcc",
-  "version": "1.0.0",
+  "name": "nmcc-cli",
+  "version": "1.0.2",
   "description": "",
   "main": "index.js",
   "bin": {
