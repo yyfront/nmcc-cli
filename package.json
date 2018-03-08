@@ -14,7 +14,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "http://172.29.3.246:8888/front/nmcc-cli.git"
+    "url": "https://github.com/yyfront/nmcc-cli.git"
   },
   "dependencies": {
     "caporal": "^0.6.0",
