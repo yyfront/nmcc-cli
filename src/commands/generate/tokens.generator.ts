@@ -26,7 +26,7 @@ export class TokensGenerator {
   private generateSpecImportToken(asset: Asset): Token {
     return {
       name: TokenName.SPEC_IMPORT,
-      value: `./${ asset.filename.replace('.spec', '').replace(/.(ts|js)/, '') }`
+      value: `./${ asset.filename.replace('.spec', '').replace(/.(ts|js)$/, '') }`
     };
   }
 
