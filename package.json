@@ -11,11 +11,13 @@
     "url": "http://172.29.3.246:8888/front/nmcc-cli.git"
   },
   "dependencies": {
-    "caporal": "^0.6.0"
+    "caporal": "^0.6.0",
+    "os-name": "^2.0.1"
   },
   "devDependencies": {
     "nodemon": "^1.12.1",
     "ts-node": "^3.3.0",
+    "@types/node": "^7.0.48",
     "typescript": "^2.4.1"
   },
   "author": "yangjd",

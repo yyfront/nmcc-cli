@@ -1,7 +1,6 @@
 import { GenerateArguments } from './command';
 import { Logger, LoggerService } from '../../logger/logger.service';
 import { ColorService } from '../../logger/color.service';
-import { ConfigurationLoader } from '../../configuration/configuration.loader';
 import { Template } from './template';
 import { TemplateLoader } from './template.loader';
 import { Asset } from './asset';
@@ -29,7 +28,7 @@ export class GenerateHandler {
 
   public async handle(args: GenerateArguments) {
     this.logger.debug(ColorService.blue('[DEBUG]'), `- ${ GenerateHandler.name }::handle() -`, 'args :', JSON.stringify(args, null, 2));
-    const language: string = ConfigurationLoader.getProperty('language');
+    const language: string = 'ts';
     const templates: Template[] = await this.templateLoader.load(args.type, language);
     const assets: Asset[] = templates
       .map((template) => this.assetGenerator.generate(
