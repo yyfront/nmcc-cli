@@ -39,7 +39,9 @@ export class GitRepository {
   private async removeGitIgnoreFile(local: string) {
     const gitIgnorePath: string = path.resolve(local, '.gitignore');
     this.logger.debug(`${ ColorService.blue('[DEBUG] delete') } ${ gitIgnorePath } file...`);
-    await FileSystemUtils.rm(gitIgnorePath);
+    try {
+      await FileSystemUtils.rm(gitIgnorePath);
+    } catch (e) {}
     this.logger.debug(`${ ColorService.blue('[DEBUG] delete') } success`);
   }
 
