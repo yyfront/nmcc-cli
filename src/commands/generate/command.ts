@@ -16,8 +16,8 @@ export class GenerateCommand {
     program
       .command('generate', 'Generate a new Nest asset')
       .alias('g')
-      .argument('<type>', 'The generated asset type', assets)
       .argument('<name>', 'The generated asset name / path')
+      .argument('[type]', 'The generated asset type', assets, 'all')
       .action(async (args, options, logger) => {
         LoggerService.setLogger(logger);
         return await new GenerateHandler().handle(args);
