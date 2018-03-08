@@ -7,7 +7,7 @@ import * as path from 'path';
 
 
 export class UpdateHandler {
-    private DEFAULT_REMOTE = 'https://github.com/idea100/nest-app.git';
+    private DEFAULT_REMOTE = 'https://github.com/yyfront/nmcc-app.git';
     private TEMP_UPDATE_FOLDER = 'tempUpdate';
     private MODULE_LOCATION = 'src/modules';
 
