@@ -7,6 +7,9 @@
     "nmcc": "index.js"
   },
   "scripts": {
+    "build": "npm run -s build:src && npm run -s build:assets",
+    "build:src": "tsc",
+    "build:assets": "node scripts/copy.script.js src/commands/generate/templates bin/commands/generate/templates",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
