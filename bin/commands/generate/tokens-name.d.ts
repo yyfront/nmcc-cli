@@ -1,0 +1,7 @@
+export declare enum TokenName {
+    CLASS_NAME = "__CLASS_NAME__",
+    SPEC_IMPORT = "__SPEC_IMPORT__",
+    SERVICE_NAME = "__SERVICE_NAME__",
+    SERVICE_IMPORT = "__SERVICE_IMPORT__",
+    SERVICE_NAME_LOWER = "__SERVICE_NAME_LOWER__",
+}
