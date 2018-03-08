@@ -1,7 +1,5 @@
 # NMCC
-[![npm version](https://img.shields.io/badge/npm-1.0.5-brightgreen.svg)](https://www.npmjs.com/package/nmcc-cli)
-
-CLI tool for Nest applications
+A CLI tool for Nest applications
 
 ## Installation
 ### npm :
