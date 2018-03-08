@@ -1,8 +1,11 @@
 {
-  "name": "nmcc-cli",
+  "name": "nmcc",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "bin": {
+    "nmcc": "index.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -12,6 +15,7 @@
   },
   "dependencies": {
     "caporal": "^0.6.0",
+    "fs-extra": "^5.0.0",
     "os-name": "^2.0.1"
   },
   "devDependencies": {

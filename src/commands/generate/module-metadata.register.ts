@@ -10,7 +10,6 @@ export class ModuleMetadataRegister {
   ) { }
 
   public register(asset: Asset, module: Asset): Asset {
-    this.logger.debug(ColorService.blue('[DEBUG]'), `- ${ModuleMetadataRegister.name}::register() -`, `asset : ${JSON.stringify(asset, null, 2)}`, `module : ${JSON.stringify(module, null, 2)}`);
     const metadata: ModuleMetadata = this.parser.parse(module.template.content);
     const updatedMetadata: ModuleMetadata = this.updateMetadata(Object.assign({}, metadata), asset);
     return this.updateModule(updatedMetadata, Object.assign({}, module));

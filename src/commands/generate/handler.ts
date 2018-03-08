@@ -27,7 +27,6 @@ export class GenerateHandler {
   ) {}
 
   public async handle(args: GenerateArguments) {
-    this.logger.debug(ColorService.blue('[DEBUG]'), `- ${ GenerateHandler.name }::handle() -`, 'args :', JSON.stringify(args, null, 2));
     const language: string = 'ts';
     const templates: Template[] = await this.templateLoader.load(args.type, language);
     const assets: Asset[] = templates
@@ -46,15 +45,12 @@ export class GenerateHandler {
     for (const asset of assets) {
       await this.assetEmitter.emit(asset);
     }
-    // const asset: Asset = assets.find((asset) => asset.filename.indexOf('spec') === -1);
     const assetArr = assets.filter((asset) => asset.filename.indexOf('spec') === -1 && asset.filename.indexOf('module.') === -1);
     for (const item of assetArr) {
       const module: Asset = await this.moduleLoader.load(item);
       const registeredModule: Asset = this.moduleRegister.register(item, module);
       await this.moduleEmitter.emit(registeredModule);
     }
-    // const module: Asset = await this.moduleLoader.load(asset);
-    // const registeredModule: Asset = this.moduleRegister.register(asset, module);
-    // await this.moduleEmitter.emit(registeredModule);
+    this.logger.info(ColorService.blue(' generate success'));
   }
 }

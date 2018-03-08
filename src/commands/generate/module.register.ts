@@ -12,7 +12,6 @@ export class ModuleRegister {
   ) {}
 
   public register(asset: Asset, module: Asset): Asset {
-    this.logger.debug(ColorService.blue('[DEBUG]'), `- ${ ModuleRegister.name }::register() -`, `asset : ${ JSON.stringify(asset, null, 2) }`, `module : ${ JSON.stringify(module, null, 2) }`);
     let toReturn: Asset = this.importRegister.register(asset, Object.assign({}, module));
     return this.metadataRegister.register(asset, toReturn);
   }
